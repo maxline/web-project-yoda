@@ -20,7 +20,7 @@ Application credentials:
  - user  user
  - admin admin
 
-Some screenshots:
-login page: https://gyazo.com/c64691e8caf7a570d35feb694fbc9b15
-user page: https://gyazo.com/53dd687a5ab51f6d9ece9d7ec649e436
-admin page: https://gyazo.com/823b06da5ccae8714274182b5369a440
+Some screenshots:<br>
+login page: https://gyazo.com/c64691e8caf7a570d35feb694fbc9b15 <br>
+user page: https://gyazo.com/53dd687a5ab51f6d9ece9d7ec649e436  <br>
+admin page: https://gyazo.com/823b06da5ccae8714274182b5369a440 <br>
