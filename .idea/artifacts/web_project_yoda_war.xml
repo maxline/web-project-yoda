@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="web-project-yoda:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/web_project_yoda_war</output-path>
+    <root id="archive" name="web-project-yoda_war.war">
+      <element id="artifact" artifact-name="web-project-yoda:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jstl-1.2" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/log4j-1.2.15.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/tomcat-juli.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
