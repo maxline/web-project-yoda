@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,9 +15,9 @@ import java.util.Map;
  */
 public class UserTypeDAO extends DAOBase implements IUserTypeDAO {
     private static final Logger logger = Logger.getLogger(UserTypeDAO.class.getName());
-    private static final String SELECT_ALL_USER_TYPES = "SELECT * FROM usertype";
-    private static final String SELECT_USER_TYPE_BY_ID = "SELECT * FROM usertype WHERE usertypeId = ";
     private static final int INITIAL_CAPACITY = 5;
+    private static final String SELECT_ALL_USER_TYPES = "SELECT * FROM usertype";
+    private static final String SELECT_USER_TYPE_BY_ID = "SELECT * FROM usertype WHERE usertypeId=?";
 
     @Override
     public Map<Long, String> findAll() {
@@ -41,8 +42,7 @@ public class UserTypeDAO extends DAOBase implements IUserTypeDAO {
 
     @Override
     public UserType findById(long id) {
-        ResultSet rs = executeSelect(SELECT_USER_TYPE_BY_ID + id);
-        //todo
+        ResultSet rs = executeSelect(SELECT_USER_TYPE_BY_ID, Collections.singletonList(id));
         try {
             if (rs.next()) {
                 return new UserType(
