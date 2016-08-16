@@ -49,7 +49,7 @@ public class DictionaryManager {
 
     public Map<String, String> getBundleData(ELocale locale) {
         switch (locale) {
-            case RU:
+            case ru_RU:
                 resource = ResourceBundle.getBundle(DICTIONARY_BUNDLE, new Locale("ru", "RU"));
                 break;
             default:

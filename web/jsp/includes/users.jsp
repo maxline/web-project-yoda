@@ -39,7 +39,6 @@
                         <small>${user.password}</small>
                     </td>
                     <td>
-                        <%--<small>${user.userTypeId}</small>--%>
                         <small>${USER_TYPES_MAP.get(Long.valueOf(user.userTypeId))}</small>
                     </td>
                 </tr>
@@ -67,20 +66,20 @@
             ${DICTIONARY_BUNDLE.get("PASSWORD")}:
             <input type="password" class="input-text" name="CURRENT_USER_PASSWORD" value="${CURRENT_ELEMENT.password}">
 
-                ${DICTIONARY_BUNDLE.get("USER_TYPE")}:
-                <select name="CURRENT_USER_TYPE">
-                    <c:forEach var="userTypeEntry" items="${USER_TYPES_MAP.entrySet()}">
-                        <c:choose>
-                            <c:when test="${userTypeEntry.key==CURRENT_ELEMENT.userTypeId}">
-                                <option selected
-                                        value="${userTypeEntry.key}">${userTypeEntry.value}</option>
-                            </c:when>
-                            <c:otherwise>
-                                <option value="${userTypeEntry.key}">${userTypeEntry.value}</option>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                </select>
+            ${DICTIONARY_BUNDLE.get("USER_TYPE")}:
+            <select name="CURRENT_USER_TYPE">
+                <c:forEach var="userTypeEntry" items="${USER_TYPES_MAP.entrySet()}">
+                    <c:choose>
+                        <c:when test="${userTypeEntry.key==CURRENT_ELEMENT.userTypeId}">
+                            <option selected
+                                    value="${userTypeEntry.key}">${userTypeEntry.value}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value="${userTypeEntry.key}">${userTypeEntry.value}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
         </div>
 
         <div class="form-group">

@@ -2,9 +2,8 @@ package com.epam.yoda.control.servlet;
 
 import com.epam.yoda.config.manager.ConfigManager;
 import com.epam.yoda.config.manager.DictionaryManager;
-import com.epam.yoda.control.command.DisplayAdminHelper;
-import com.epam.yoda.control.command.DisplayUserHelper;
-import com.epam.yoda.control.command.ICommand;
+import com.epam.yoda.control.command.DisplayHelper;
+import com.epam.yoda.control.icommand.ICommand;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -38,9 +37,9 @@ public class Controller extends HttpServlet {
             page = command.execute(request, response);
 
             if (page.equals(ConfigManager.getInstance().getProperty(PAGE_MAIN_USER))) {
-                DisplayUserHelper.getInstance().prepareFilteredData(request);
+                DisplayHelper.getInstance().prepareUserPageData(request);
             } else if (page.equals(ConfigManager.getInstance().getProperty(PAGE_MAIN_ADMIN))) {
-                DisplayAdminHelper.getInstance().prepareFilteredData(request);
+                DisplayHelper.getInstance().prepareAdminPageData(request);
             }
         } catch (ServletException e) {
             logger.error(e);

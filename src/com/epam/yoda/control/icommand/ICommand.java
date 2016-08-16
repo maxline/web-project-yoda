@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.epam.yoda.control.command;
+package com.epam.yoda.control.icommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -48,11 +48,12 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">${DICTIONARY_BUNDLE.get("SETTINGS")}<span
+                        <a class="dropdown-toggle" data-toggle="dropdown"
+                           href="#">${DICTIONARY_BUNDLE.get("SETTINGS")}<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'EN')">En</a></li>
-                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'RU')">Ru</a></li>
+                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'en_US')">En</a></li>
+                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'ru_RU')">Ru</a></li>
                         </ul>
                     </li>
 
@@ -70,10 +71,18 @@
                 <ul class="nav nav-sidebar">
                     <li class="active"><a href="" onclick="return false">${DICTIONARY_BUNDLE.get("ADMIN_PAGE")}<span
                             class="sr-only">(current)</span></a></li>
-                    <li><a href="" onclick="return setCommandAndItem('DISPLAY_ADMIN', 'CATEGORY')">${DICTIONARY_BUNDLE.get("CATEGORIES")}</a></li>
-                    <li><a href="" onclick="return setCommandAndItem('DISPLAY_ADMIN', 'STATUS')">${DICTIONARY_BUNDLE.get("STATUSES")}</a></li>
-                    <li><a href="" onclick="return setCommandAndItem('DISPLAY_ADMIN', 'ACTIVITY')">${DICTIONARY_BUNDLE.get("ACTIVITIES")}</a></li>
-                    <li><a href="" onclick="return setCommandAndItem('DISPLAY_ADMIN', 'USER')">${DICTIONARY_BUNDLE.get("USERS")}</a></li>
+                    <li><a href=""
+                           onclick="return setCommandAndItem('DISPLAY_ADMIN', 'CATEGORY')">${DICTIONARY_BUNDLE.get("CATEGORIES")}</a>
+                    </li>
+                    <li><a href=""
+                           onclick="return setCommandAndItem('DISPLAY_ADMIN', 'STATUS')">${DICTIONARY_BUNDLE.get("STATUSES")}</a>
+                    </li>
+                    <li><a href=""
+                           onclick="return setCommandAndItem('DISPLAY_ADMIN', 'ACTIVITY')">${DICTIONARY_BUNDLE.get("ACTIVITIES")}</a>
+                    </li>
+                    <li><a href=""
+                           onclick="return setCommandAndItem('DISPLAY_ADMIN', 'USER')">${DICTIONARY_BUNDLE.get("USERS")}</a>
+                    </li>
                 </ul>
             </div>
 

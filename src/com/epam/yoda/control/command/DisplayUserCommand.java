@@ -1,6 +1,7 @@
 package com.epam.yoda.control.command;
 
 import com.epam.yoda.config.manager.ConfigManager;
+import com.epam.yoda.control.icommand.ICommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

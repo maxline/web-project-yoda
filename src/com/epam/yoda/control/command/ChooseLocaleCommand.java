@@ -1,6 +1,7 @@
 package com.epam.yoda.control.command;
 
 import com.epam.yoda.config.manager.DictionaryManager;
+import com.epam.yoda.control.icommand.ICommand;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -8,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.epam.yoda.config.enums.ELocale.EN;
-import static com.epam.yoda.config.enums.ELocale.RU;
+import static com.epam.yoda.config.enums.ELocale.en_US;
+import static com.epam.yoda.config.enums.ELocale.ru_RU;
 import static com.epam.yoda.config.enums.EPageAttribute.DICTIONARY_BUNDLE;
 import static com.epam.yoda.config.enums.EPageParameter.CHOSEN_LOCALE;
 
@@ -23,11 +24,11 @@ public class ChooseLocaleCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.debug("execute() request.getParameter(CHOSEN_LOCALE.name()) = " + request.getParameter(CHOSEN_LOCALE.name()));
-        if (RU.name().equals(request.getParameter(CHOSEN_LOCALE.name()))) {
-            request.getSession().setAttribute(DICTIONARY_BUNDLE.name(), DictionaryManager.getInstance().getBundleData(RU));
+        if (ru_RU.name().equals(request.getParameter(CHOSEN_LOCALE.name()))) {
+            request.getSession().setAttribute(DICTIONARY_BUNDLE.name(), DictionaryManager.getInstance().getBundleData(ru_RU));
         } else {
-            request.getSession().setAttribute(DICTIONARY_BUNDLE.name(), DictionaryManager.getInstance().getBundleData(EN));
+            request.getSession().setAttribute(DICTIONARY_BUNDLE.name(), DictionaryManager.getInstance().getBundleData(en_US));
         }
-        return DefinePageHelper.definePage(request);
+        return DisplayHelper.getInstance().definePage(request);
     }
 }

@@ -42,6 +42,7 @@ public class UserTypeDAO extends DAOBase implements IUserTypeDAO {
     @Override
     public UserType findById(long id) {
         ResultSet rs = executeSelect(SELECT_USER_TYPE_BY_ID + id);
+        //todo
         try {
             if (rs.next()) {
                 return new UserType(

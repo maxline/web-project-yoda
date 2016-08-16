@@ -1,10 +1,10 @@
 package com.epam.yoda.control.servlet;
 
 import com.epam.yoda.control.command.*;
+import com.epam.yoda.control.icommand.ICommand;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.HashMap;
 
 import static com.epam.yoda.config.enums.ECommand.*;

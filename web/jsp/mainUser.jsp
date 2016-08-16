@@ -51,11 +51,12 @@
                     <li><a href="controller">${DICTIONARY_BUNDLE.get("KNOWLEDGE_BASE")}</a></li>
 
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="">${DICTIONARY_BUNDLE.get("SETTINGS")}<span
+                        <a class="dropdown-toggle" data-toggle="dropdown"
+                           href="">${DICTIONARY_BUNDLE.get("SETTINGS")}<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'EN')">En</a></li>
-                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'RU')">Ru</a></li>
+                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'en_US')">En</a></li>
+                            <li><a href="" onclick="return setCommandAndLocale('CHOOSE_LOCALE', 'ru_RU')">Ru</a></li>
                         </ul>
                     </li>
                     <li><a>${USER.login}</a></li>
