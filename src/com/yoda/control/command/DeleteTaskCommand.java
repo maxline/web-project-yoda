@@ -19,6 +19,8 @@ import static com.yoda.config.enums.EPageAttribute.MESSAGE;
 import static com.yoda.config.enums.EPageParameter.CHOSEN_ELEMENT_ID;
 
 /**
+ * The command provides deleting database record by chosen id for the Task entity
+ *
  * @author Sergey Mikhluk.
  */
 public class DeleteTaskCommand implements ICommand {

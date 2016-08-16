@@ -62,6 +62,11 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
         return list;
     }
 
+
+    /**
+     * The method returns string "(?,?,..,?)" for IN clause which used in prepared statement query:
+     * WHERE statusId IN(?,?,?,?,?,?), categoryId IN(?,?), activityId IN(?,?,?)
+     */
     private String buildInClause(Set setIds) {
         StringBuilder result = new StringBuilder();
         result.append("(");

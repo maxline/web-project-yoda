@@ -22,6 +22,9 @@ import static com.yoda.config.enums.EPageAttribute.MESSAGE;
 import static com.yoda.config.enums.EPageParameter.*;
 
 /**
+ * The command provides updating database record by chosen id for the next entities:
+ * Category, Status, Activity, User
+ *
  * @author Sergey Mikhluk.
  */
 public class UpdateElementCommand implements ICommand {

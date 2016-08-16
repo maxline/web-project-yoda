@@ -21,6 +21,12 @@ import static com.yoda.config.enums.EPageParameter.CHOSEN_ELEMENT_ID;
 import static com.yoda.config.enums.EPageParameter.CHOSEN_ITEM;
 
 /**
+ * The Class provides methods that deliver all needed data for jsp pages
+ * (mainUser.jsp, mainAdmin.jsp).
+ *
+ * Also the Class provides method that define which page will be shown based on
+ * information if user is logged in or not, and the type of user (ordinary user or admin).
+ *
  * @author Sergey Mikhluk.
  */
 public class DisplayHelper {

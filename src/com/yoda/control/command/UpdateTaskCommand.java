@@ -21,6 +21,8 @@ import static com.yoda.config.enums.EPageAttribute.MESSAGE;
 import static com.yoda.config.enums.EPageParameter.*;
 
 /**
+ * The command provides updating database record by chosen id for the Task entity.
+ *
  * @author Sergey Mikhluk.
  */
 public class UpdateTaskCommand implements ICommand {

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * When the Controller was invoked without any command (e.g. for the first time application was started)
+ * the MissingCommand is invoked.
+ *
  * @author Sergey Mikhluk.
  */
 public class MissingCommand implements ICommand {

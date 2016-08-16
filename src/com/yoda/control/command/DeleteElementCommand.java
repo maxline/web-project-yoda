@@ -19,6 +19,9 @@ import static com.yoda.config.enums.EPageParameter.CHOSEN_ELEMENT_ID;
 import static com.yoda.config.enums.EPageParameter.CHOSEN_ITEM;
 
 /**
+ * The command provides deleting database record by chosen id for the next entities:
+ * Category, Status, Activity, User
+ *
  * @author Sergey Mikhluk.
  */
 public class DeleteElementCommand implements ICommand {

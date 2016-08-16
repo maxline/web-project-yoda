@@ -22,6 +22,9 @@ import static com.yoda.config.enums.EDictionaryKey.ELEMENT_NOT_ADDED;
 import static com.yoda.config.enums.EPageParameter.*;
 
 /**
+ * The command provides adding new database record for the next entities:
+ * Category, Status, Activity, User
+ *
  * @author Sergey Mikhluk.
  */
 public class AddElementCommand implements ICommand {

@@ -14,6 +14,9 @@ import java.util.Set;
 import static com.yoda.config.enums.EPageParameter.*;
 
 /**
+ * The Class provides methods for setting filter and order which used by TaskDAO
+ * and helps generate database query for receiving list of task.
+ *
  * @author Sergey Mikhluk.
  */
 public class QueryFilter {
@@ -54,15 +57,6 @@ public class QueryFilter {
         return localInstance;
     }
 
-    //    /**
-//     * Возвращает строку вида (0,1,..,n) для подстановки фильтра в запросе
-//     * WHERE statusId IN(...), categoryId IN(...), activityId IN(...)
-//     * Если ни один фильтр не задан (галочка не включена), то считается что включены все галочки.
-//     *
-//     * @param idsFromPageSubFilter Фильтр из формы
-//     * @param idsFromDAO           когда фильтр пустой берем все ИД просто из ДАО
-//     * @return
-//     */
     public String getQueryStringFromSubFilter(ESubFilter eSubFilter) {
         switch (eSubFilter) {
             case TASK_NAME:
@@ -88,16 +82,9 @@ public class QueryFilter {
     }
 
     /**
-     * Пример: для категорий FilterN [0,1,6], где в скобках id категорий которые попадут в select выборку фильтра при получении TaskDAO.getAsList()
-     *
-     * @param eSubFilters одна из таблиц по которой можно фильтровать например category, status, activity
-     * @param subFilterId id элемента по которому отработает фильтр например для category (id=1, name= работа)
-     * @param enabled   если "enabled" включаем subFilterId в фильтр
-     */
-
-    /**
-     * index - порядковые номер статуса (0 - NEW, 1 - CLOSED ...)
-     * value - 1 включен фильтр для данного статуса, 0 выключен
+     * The method transform the checked checkboxes on the mainUser page (categories, statuses, activities)
+     * to the list of ids (categories, statuses, activities) that will be used in prepared statement query
+     * IN clause: WHERE statusId IN(?,?,?,?,?,?), categoryId IN(?,?), activityId IN(?,?,?)
      */
     public void setFiltersFromPage(HttpServletRequest request) {
         categoryFilter.clear();

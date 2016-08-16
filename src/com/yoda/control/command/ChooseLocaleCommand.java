@@ -15,6 +15,8 @@ import static com.yoda.config.enums.EPageAttribute.DICTIONARY_BUNDLE;
 import static com.yoda.config.enums.EPageParameter.CHOSEN_LOCALE;
 
 /**
+ * The command provides change of UI language from dictionary bundle.
+ *
  * @author Sergey Mikhluk.
  */
 public class ChooseLocaleCommand implements ICommand {

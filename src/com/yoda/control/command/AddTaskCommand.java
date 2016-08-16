@@ -19,6 +19,8 @@ import static com.yoda.config.enums.EDictionaryKey.TASK_NOT_ADDED;
 import static com.yoda.config.enums.EPageParameter.*;
 
 /**
+ * The command provides adding new database record for the Task entity
+ *
  * @author Sergey Mikhluk.
  */
 public class AddTaskCommand implements ICommand {
