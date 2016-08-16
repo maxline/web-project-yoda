@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="tags" uri="http://epam.com/yoda/tags" %>
+<%@ taglib prefix="tags" uri="http://yoda.com/yoda/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="col-md-7 col-md-offset-2 main">

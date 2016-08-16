@@ -8,9 +8,9 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="jstl-1.2" />
-          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/log4j-1.2.15.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/tomcat-juli.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/log4j-1.2.15.jar" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.39-bin" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="web-project-yoda/web/Web" />

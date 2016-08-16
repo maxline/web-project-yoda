@@ -7,11 +7,11 @@
 
     <tlib-version>1.0</tlib-version>
     <short-name>mistTags</short-name>
-    <uri>http://epam.com/yoda/tags</uri>
+    <uri>http://yoda.com/yoda/tags</uri>
 
     <tag>
         <name>displayElementTag</name>
-        <tag-class>com.epam.yoda.tag.DisplayElementTag</tag-class>
+        <tag-class>com.yoda.tag.DisplayElementTag</tag-class>
         <body-content>scriptless</body-content>
         <attribute>
             <name>columnName</name>
