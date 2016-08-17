@@ -5,6 +5,7 @@ import com.yoda.model.factory.DAOFactory;
 import com.yoda.model.idao.IActivityDAO;
 import com.yoda.model.idao.ICategoryDAO;
 import com.yoda.model.idao.IStatusDAO;
+import com.yoda.model.idao.IUserDAO;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,17 +32,20 @@ public class QueryFilter {
     private final Set<Long> categoryFilter = new HashSet<>(SUB_FILTER_INITIAL_CAPACITY);
     private final Set<Long> activityFilter = new HashSet<>(SUB_FILTER_INITIAL_CAPACITY);
     private final Set<Long> statusFilter = new HashSet<>(SUB_FILTER_INITIAL_CAPACITY);
+    private final Set<Long> userFilter = new HashSet<>(SUB_FILTER_INITIAL_CAPACITY);
     private String taskNameFilter;
     private String orderBy;
 
     private final ICategoryDAO categoryDAO;
     private final IActivityDAO activityDAO;
     private final IStatusDAO statusDAO;
+    private final IUserDAO userDAO;
 
     private QueryFilter() {
         categoryDAO = DAOFactory.createCategoryDAO();
         activityDAO = DAOFactory.createActivityDAO();
         statusDAO = DAOFactory.createStatusDAO();
+        userDAO = DAOFactory.createUserDAO();
     }
 
     public static QueryFilter getInstance() {
@@ -76,6 +80,8 @@ public class QueryFilter {
                 return (statusFilter.isEmpty()) ? statusDAO.findAll().keySet() : statusFilter;
             case ACTIVITY:
                 return (activityFilter.isEmpty()) ? activityDAO.findAll().keySet() : activityFilter;
+            case USER:
+                return (userFilter.isEmpty()) ? null : userFilter;
             default:
                 throw new IllegalArgumentException();
         }
@@ -90,6 +96,7 @@ public class QueryFilter {
         categoryFilter.clear();
         statusFilter.clear();
         activityFilter.clear();
+        userFilter.clear();
         taskNameFilter = null;
         orderBy = null;
         String enabled;
@@ -112,6 +119,13 @@ public class QueryFilter {
             enabled = request.getParameter(SUB_FILTER_ACTIVITY.name() + id);
             if (ENABLED.equals(enabled)) {
                 activityFilter.add(id);
+            }
+        }
+
+        for (long id : userDAO.findAllAsMap().keySet()) {
+            enabled = request.getParameter(SUB_FILTER_USER.name() + id);
+            if (ENABLED.equals(enabled)) {
+                userFilter.add(id);
             }
         }
 

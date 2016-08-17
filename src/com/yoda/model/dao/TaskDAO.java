@@ -23,10 +23,10 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
     private static final String SELECT_TASK_BY_ID = "SELECT * FROM task WHERE taskId=?";
     //language=MySQL
     private static final String INSERT_TASK = "INSERT INTO task" +
-            "(name, content, deadline, categoryId, activityId, priority, statusId) VALUES(?,?,?,?,?,?,?)";
+            "(name, content, deadline, categoryId, activityId, priority, statusId, userId) VALUES(?,?,?,?,?,?,?,?)";
     //language=MySQL
     private static final String UPDATE_TASK = "UPDATE task " +
-            "SET name=?, content=?, deadline=?, categoryId=?, activityId=?, priority=?, statusId=? WHERE taskId=?";
+            "SET name=?, content=?, deadline=?, categoryId=?, activityId=?, priority=?, statusId=?, userId=? WHERE taskId=?";
     //language=MySQL
     private static final String DELETE_TASK = "DELETE FROM task WHERE taskId = ?";
 
@@ -39,6 +39,7 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
                 rs.getInt("activityId"),
                 rs.getInt("priority"),
                 rs.getInt("statusId"),
+                rs.getInt("userId"),
                 rs.getDate("deadline")
         );
     }
@@ -83,11 +84,15 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
         Set<Long> categoriesIds = queryFilter.getIdsFromSubFilter(CATEGORY);
         Set<Long> statusesIds = queryFilter.getIdsFromSubFilter(STATUS);
         Set<Long> activitiesIds = queryFilter.getIdsFromSubFilter(ACTIVITY);
+        Set<Long> usersIds = queryFilter.getIdsFromSubFilter(USER);
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT * FROM task WHERE categoryId IN ").append(buildInClause(categoriesIds));
         sql.append(" AND statusId IN ").append(buildInClause(statusesIds));
         sql.append(" AND activityId IN ").append(buildInClause(activitiesIds));
+        if (usersIds != null) {
+            sql.append(" AND userId IN ").append(buildInClause(usersIds));
+        }
         sql.append(" AND name LIKE ?");
         sql.append(" ORDER BY ").append(queryFilter.getQueryStringFromSubFilter(ORDER_BY));
 
@@ -95,6 +100,9 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
         paramList.addAll(categoriesIds);
         paramList.addAll(statusesIds);
         paramList.addAll(activitiesIds);
+        if (usersIds != null) {
+            paramList.addAll(usersIds);
+        }
         paramList.add(queryFilter.getQueryStringFromSubFilter(TASK_NAME));
 
         List<Task> list = new ArrayList<>(INITIAL_CAPACITY);
@@ -138,7 +146,8 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
                 task.getCategoryId(),
                 task.getActivityId(),
                 task.getPriority(),
-                task.getStatusId()
+                task.getStatusId(),
+                task.getUserId()
         ));
     }
 
@@ -152,6 +161,7 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
                 task.getActivityId(),
                 task.getPriority(),
                 task.getStatusId(),
+                task.getUserId(),
                 task.getTaskId()
         ));
     }

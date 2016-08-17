@@ -114,6 +114,8 @@ public class DisplayHelper {
     public void prepareUserPageData(HttpServletRequest request) {
         setCommonAttributes(request);
 
+        request.getSession().setAttribute(USERS_MAP.name(), userDAO.findAllAsMap());
+
         queryFilter.setFiltersFromPage(request);
         request.getSession().setAttribute(TASKS_LIST.name(), taskDAO.findByFilter(queryFilter));
 

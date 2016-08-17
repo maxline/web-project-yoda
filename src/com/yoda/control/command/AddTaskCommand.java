@@ -33,6 +33,7 @@ public class AddTaskCommand implements ICommand {
                 request.getParameter(CURRENT_TASK_ACTIVITY.name()),
                 request.getParameter(CURRENT_TASK_PRIORITY.name()),
                 request.getParameter(CURRENT_TASK_STATUS.name()),
+                request.getParameter(CURRENT_TASK_USER.name()),
                 request.getParameter(CURRENT_TASK_DEADLINE.name()));
 
         ITaskDAO taskDAO = DAOFactory.createTaskDAO();

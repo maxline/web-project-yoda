@@ -3,6 +3,7 @@ package com.yoda.model.idao;
 import com.yoda.model.entities.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Sergey Mikhluk.
@@ -10,6 +11,7 @@ import java.util.List;
 public interface IUserDAO extends IDAO<User> {
 
     List<User> findAll();
+    Map<Long, String> findAllAsMap();
 
     User find(String login, String password);
 

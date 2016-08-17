@@ -44,7 +44,7 @@ public class UpdateTaskCommand implements ICommand {
             logger.error(e);
             return ConfigManager.getInstance().getProperty(PAGE_MAIN_USER);
         }
-
+logger.debug("execute request.getParameter(CURRENT_TASK_USER.name()) = " + request.getParameter(CURRENT_TASK_USER.name()));
         Task task = new Task(currentTaskId,
                 request.getParameter(CURRENT_TASK_NAME.name()),
                 request.getParameter(CURRENT_TASK_CONTENT.name()),
@@ -52,6 +52,7 @@ public class UpdateTaskCommand implements ICommand {
                 request.getParameter(CURRENT_TASK_ACTIVITY.name()),
                 request.getParameter(CURRENT_TASK_PRIORITY.name()),
                 request.getParameter(CURRENT_TASK_STATUS.name()),
+                request.getParameter(CURRENT_TASK_USER.name()),
                 request.getParameter(CURRENT_TASK_DEADLINE.name()));
 
         if (taskDAO.update(task)) {

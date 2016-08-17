@@ -19,9 +19,10 @@ public class Task {
     private int activityId;
     private int priority;
     private int statusId;
+    private int userId;
     private Date deadline;
 
-    public Task(long taskId, String name, String content, int categoryId, int activityId, int priority, int statusId, Date deadline) {
+    public Task(long taskId, String name, String content, int categoryId, int activityId, int priority, int statusId, int userId, Date deadline) {
         this.taskId = taskId;
         this.name = name;
         this.content = content;
@@ -29,10 +30,11 @@ public class Task {
         this.activityId = activityId;
         this.priority = priority;
         this.statusId = statusId;
+        this.userId = userId;
         this.deadline = deadline;
     }
 
-    public Task(long taskId, String name, String content, String categoryId, String activityId, String priority, String statusId, String deadline) {
+    public Task(long taskId, String name, String content, String categoryId, String activityId, String priority, String statusId, String userId, String deadline) {
         this.taskId = taskId;
         this.name = name;
         this.content = content;
@@ -40,6 +42,7 @@ public class Task {
         this.activityId = Integer.parseInt(activityId);
         this.priority = Integer.parseInt(priority);
         this.statusId = Integer.parseInt(statusId);
+        this.userId = Integer.parseInt(userId);
         this.deadline = stringToDate(deadline);
     }
 
@@ -119,6 +122,14 @@ public class Task {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Override

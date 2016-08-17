@@ -6,10 +6,7 @@ import org.apache.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Sergey Mikhluk.
@@ -90,6 +87,29 @@ public class UserDAO extends DAOBase implements IUserDAO {
             close(rs);
         }
         return list;
+    }
+
+    @Override
+    public Map<Long, String> findAllAsMap() {
+        Map<Long, String> map = new HashMap<>(INITIAL_CAPACITY);
+        ResultSet rs = executeSelect(SELECT_ALL_USERS);
+
+        try {
+            while (rs.next()) {
+                User user = new User(
+                        rs.getLong("userId"),
+                        rs.getString("login"),
+                        rs.getString("password"),
+                        rs.getInt("userTypeId")
+                );
+                map.put(user.getUserId(), user.getLogin());
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+        } finally {
+            close(rs);
+        }
+        return map;
     }
 
     @Override

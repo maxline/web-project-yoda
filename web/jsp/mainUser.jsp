@@ -125,6 +125,22 @@
                     </div>
                 </div>
 
+                <h3>${DICTIONARY_BUNDLE.get("USERS")}</h3>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <c:forEach var="userEntry" items="${USERS_MAP.entrySet()}">
+                            <label>
+                                <input type="checkbox" name="SUB_FILTER_USER${userEntry.key}" value="enabled"
+                                    <c:set var="userId" value="SUB_FILTER_USER${userEntry.key}"
+                                           scope="page"/>
+                                       <c:if test='${param.get(userId)== "enabled"}'>checked="checked"</c:if>
+                                >${userEntry.value}
+                            </label>
+                            <br>
+                        </c:forEach>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <h3>${DICTIONARY_BUNDLE.get("ORDER_BY")}:</h3>
                     <select name="SUB_FILTER_ORDER_BY">
@@ -202,6 +218,9 @@
                             <small>${DICTIONARY_BUNDLE.get('ACTIVITY')}</small>
                         </th>
                         <th>
+                            <small>${DICTIONARY_BUNDLE.get('USER')}</small>
+                        </th>
+                        <th>
                             <small>${DICTIONARY_BUNDLE.get('DEADLINE')}</small>
                         </th>
                     </tr>
@@ -236,6 +255,10 @@
                             <td>
                                 <small>${ACTIVITIES_MAP.get(Long.valueOf(task.activityId))}</small>
                             </td>
+                            <td>
+                                <small>${USERS_MAP.get(Long.valueOf(task.userId))}</small>
+                            </td>
+
                             <td>
                                 <small>${task.deadline}</small>
                             </td>
@@ -337,6 +360,28 @@
                                 </select>
                             </td>
                         </tr>
+
+                        <tr>
+                            <td>
+                                ${DICTIONARY_BUNDLE.get("USER")}:
+                            </td>
+                            <td>
+                                <select name="CURRENT_TASK_USER">
+                                    <c:forEach var="userEntry" items="${USERS_MAP.entrySet()}">
+                                        <c:choose>
+                                            <c:when test="${userEntry.key==CURRENT_TASK.userId}">
+                                                <option selected
+                                                        value="${userEntry.key}">${userEntry.value}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="${userEntry.key}">${userEntry.value}</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+
                         <tr>
                             <td>
                                 ${DICTIONARY_BUNDLE.get("PRIORITY")}:
