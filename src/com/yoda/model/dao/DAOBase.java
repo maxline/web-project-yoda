@@ -28,7 +28,7 @@ abstract class DAOBase {
         return connection;
     }
 
-    ResultSet executeSelect(String sql) {
+    protected ResultSet executeSelect(String sql) {
         ResultSet rs = null;
         try {
             connSelect = getConnection();
@@ -69,13 +69,22 @@ abstract class DAOBase {
             for (int index = 0; index < paramList.size(); index++) {
                 stmtUpdate.setObject(index + 1, paramList.get(index));
             }
+
+            connUpdate.setAutoCommit(false);
             executeStatus = stmtUpdate.executeUpdate() > 0;
+            connUpdate.commit();
+
         } catch (SQLException e) {
+//            try {
+//                connUpdate.rollback();
+//            } catch (SQLException e1) {
+//                e1.printStackTrace();
+//            }
             logger.error("executeUpdate() " + e);
         } finally {
             try {
                 if (stmtUpdate != null) {
-                    stmtUpdate.close();
+                    stmtUpdate.close();  //todo затираем предыдущие ексепшены
                 }
                 if (connUpdate != null) {
                     connUpdate.close();
