@@ -70,13 +70,13 @@ abstract class DAOBase {
                 stmtUpdate.setObject(index + 1, paramList.get(index));
             }
 
-            connUpdate.setAutoCommit(false);
+//            connUpdate.setAutoCommit(false); //todo  если идет подряд несколько апдейтов использовать транзакции для отката, одна прошла, другая не прошла
             executeStatus = stmtUpdate.executeUpdate() > 0;
-            connUpdate.commit();
+//            connUpdate.commit();
 
         } catch (SQLException e) {
 //            try {
-//                connUpdate.rollback();
+//                connUpdate.rollback();  //todo
 //            } catch (SQLException e1) {
 //                e1.printStackTrace();
 //            }
@@ -84,7 +84,7 @@ abstract class DAOBase {
         } finally {
             try {
                 if (stmtUpdate != null) {
-                    stmtUpdate.close();  //todo затираем предыдущие ексепшены
+                    stmtUpdate.close();  //todo в try catch без ресурсов затираются предыдущие ексепшены
                 }
                 if (connUpdate != null) {
                     connUpdate.close();

@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class UserDAO extends DAOBase implements IUserDAO {
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
+    private static volatile UserDAO instance;
     private static final int INITIAL_CAPACITY = 8;
     //language=MySQL
     private static final String SELECT_ALL_USERS = "SELECT * FROM user ORDER BY userId";
@@ -28,6 +29,19 @@ public class UserDAO extends DAOBase implements IUserDAO {
     private static final String UPDATE_USER = "UPDATE user SET login=?, password=?, usertypeId=? WHERE userId=?";
     //language=MySQL
     private static final String DELETE_USER = "DELETE FROM user WHERE userId=?";
+
+    public static UserDAO getInstance() {
+        UserDAO localInstance = instance;
+        if (localInstance == null) {
+            synchronized (UserDAO.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new UserDAO();
+                }
+            }
+        }
+        return localInstance;
+    }
 
     @Override
     public User find(String login, String password) {

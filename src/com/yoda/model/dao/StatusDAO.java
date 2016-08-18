@@ -16,6 +16,7 @@ import java.util.Map;
  */
 public class StatusDAO extends DAOBase implements IStatusDAO {
     private static final Logger logger = Logger.getLogger(StatusDAO.class.getName());
+    private static volatile StatusDAO instance;
     private static final int INITIAL_CAPACITY = 5;
     //language=MySQL
     private static final String SELECT_ALL_STATUSES = "SELECT * FROM status ORDER BY statusId";
@@ -27,6 +28,19 @@ public class StatusDAO extends DAOBase implements IStatusDAO {
     private static final String UPDATE_STATUS = "UPDATE status SET name=? WHERE statusId=?";
     //language=MySQL
     private static final String DELETE_STATUS = "DELETE FROM status WHERE statusId=?";
+
+    public static StatusDAO getInstance() {
+        StatusDAO localInstance = instance;
+        if (localInstance == null) {
+            synchronized (StatusDAO.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new StatusDAO();
+                }
+            }
+        }
+        return localInstance;
+    }
 
     @Override
     public Map<Long, String> findAll() {

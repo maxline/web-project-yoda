@@ -15,7 +15,9 @@ import static com.yoda.config.enums.ESubFilter.*;
  * @author Sergey Mikhluk.
  */
 public class TaskDAO extends DAOBase implements ITaskDAO {
+
     private static final Logger logger = Logger.getLogger(TaskDAO.class.getName());
+    private static volatile TaskDAO instance;
     private static final int INITIAL_CAPACITY = 20;
     //language=MySQL
     private static final String SELECT_ALL_TASKS = "SELECT * FROM task ORDER BY taskId";
@@ -29,6 +31,20 @@ public class TaskDAO extends DAOBase implements ITaskDAO {
             "SET name=?, content=?, deadline=?, categoryId=?, activityId=?, priority=?, statusId=?, userId=? WHERE taskId=?";
     //language=MySQL
     private static final String DELETE_TASK = "DELETE FROM task WHERE taskId = ?";
+
+    public static TaskDAO getInstance() {
+        TaskDAO localInstance = instance;
+        if (localInstance == null) {
+            synchronized (TaskDAO.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new TaskDAO();
+                }
+            }
+        }
+        return localInstance;
+    }
+
 
     private Task getTask(ResultSet rs) throws SQLException {
         return new Task(

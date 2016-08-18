@@ -16,6 +16,7 @@ import java.util.Map;
  */
 public class CategoryDAO extends DAOBase implements ICategoryDAO {
     private static final Logger logger = Logger.getLogger(CategoryDAO.class.getName());
+    private static volatile CategoryDAO instance;
     private static final int INITIAL_CAPACITY = 5;
     //language=MySQL
     private static final String SELECT_ALL_CATEGORIES = "SELECT * FROM category ORDER BY categoryId";
@@ -27,6 +28,19 @@ public class CategoryDAO extends DAOBase implements ICategoryDAO {
     private static final String UPDATE_CATEGORY = "UPDATE category SET name=? WHERE categoryId=?";
     //language=MySQL
     private static final String DELETE_CATEGORY = "DELETE FROM category WHERE categoryId=?";
+
+    public static CategoryDAO getInstance() {
+        CategoryDAO localInstance = instance;
+        if (localInstance == null) {
+            synchronized (CategoryDAO.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new CategoryDAO();
+                }
+            }
+        }
+        return localInstance;
+    }
 
     @Override
     public Map<Long, String> findAll() {

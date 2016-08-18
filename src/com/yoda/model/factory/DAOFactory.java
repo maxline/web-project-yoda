@@ -9,7 +9,7 @@ import com.yoda.model.idao.*;
 public class DAOFactory {
 
     public static ITaskDAO createTaskDAO() {
-        return new TaskDAO();
+        return TaskDAO.getInstance();
     }
 
     public static IActivityDAO createActivityDAO() {
@@ -17,18 +17,18 @@ public class DAOFactory {
     }
 
     public static ICategoryDAO createCategoryDAO() {
-        return new CategoryDAO();
+        return CategoryDAO.getInstance();
     }
 
     public static IStatusDAO createStatusDAO() {
-        return new StatusDAO();
+        return StatusDAO.getInstance();
     }
 
     public static IUserTypeDAO createUserTypeDAO() {
-        return new UserTypeDAO();
+        return UserTypeDAO.getInstance();
     }
 
     public static IUserDAO createUserDAO() {
-        return new UserDAO();
+        return UserDAO.getInstance();
     }
 }
